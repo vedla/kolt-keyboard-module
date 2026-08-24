@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["KoltKeyboardModule"]
+  },
+  "android": {
+    "modules": ["ca.vedla.KoltKeys.Keyboard.KoltKeyboardModule"]
+  }
+}

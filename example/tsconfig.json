@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "kolt-keyboard": ["../src/index"],
+      "kolt-keyboard/*": ["../src/*"]
+    }
+  }
+}
