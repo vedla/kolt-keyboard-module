@@ -24,7 +24,13 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-ios-scene-lifecycle-plugin"
+      "expo-ios-scene-lifecycle-plugin",
+      [
+        "../app.plugin.js",
+        {
+          "appGroupIdentifier": "group.ca.vedla.kolt.keyboard"
+        }
+      ]
     ]
   }
 }

@@ -19,5 +19,7 @@ Pod::Spec.new do |s|
     'DEFINES_MODULE' => 'YES',
   }
 
-  s.source_files = "**/*.{h,m,mm,swift,hpp,cpp}"
+  # The Expo module must not compile the old standalone SwiftUI app under
+  # ios/Sources. Only this bridge belongs in the host application's pod.
+  s.source_files = "KoltKeyboardModule.swift"
 end

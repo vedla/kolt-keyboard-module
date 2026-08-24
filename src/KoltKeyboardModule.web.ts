@@ -1,6 +1,19 @@
-import { registerWebModule, NativeModule } from 'expo';
+import { NativeModule, registerWebModule } from 'expo';
 
-// KoltKeyboardModule is not available on the web platform.
-class KoltKeyboardModule extends NativeModule<{}> {}
+class KoltKeyboardWebModule extends NativeModule<Record<never, never>> {
+  private configuration: string | null = null;
 
-export default registerWebModule(KoltKeyboardModule, 'KoltKeyboardModule');
+  setConfiguration(json: string): void {
+    this.configuration = json;
+  }
+
+  getConfiguration(): string | null {
+    return this.configuration;
+  }
+
+  clearConfiguration(): void {
+    this.configuration = null;
+  }
+}
+
+export default registerWebModule(KoltKeyboardWebModule, 'KoltKeyboard');
