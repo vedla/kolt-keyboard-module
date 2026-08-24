@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2FCF6D3852E412A34E0AAC10 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3BED72603C33679BE73D75 /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		60A7986000786A32D3070237 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 8471FD694E9E64BA206645DD /* PrivacyInfo.xcprivacy */; };
-		8F69FA9FFE964E33ABDCE83A /* libPods-koltkeyboardexample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E59F52EDEDB63C0E52DDAE /* libPods-koltkeyboardexample.a */; };
+		A53925BF1EB810401A89932B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 54A6E4436B033A5A10FB179B /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C6D46A2788312C4601176386 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC199630935253A9FE77AEE4 /* ExpoModulesProvider.swift */; };
+		C18C20F4C74DEB9988E710B4 /* libPods-koltkeyboardexample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B710CAEEA53C58345619B53 /* libPods-koltkeyboardexample.a */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E3BED72603C33679BE73D75 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-koltkeyboardexample/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* koltkeyboardexample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = koltkeyboardexample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = koltkeyboardexample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = koltkeyboardexample/Info.plist; sourceTree = "<group>"; };
-		24D73E2D4F898D0BEA016039 /* Pods-koltkeyboardexample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-koltkeyboardexample.release.xcconfig"; path = "Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample.release.xcconfig"; sourceTree = "<group>"; };
-		2ADF024F5D0238F601D6AE5D /* Pods-koltkeyboardexample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-koltkeyboardexample.debug.xcconfig"; path = "Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample.debug.xcconfig"; sourceTree = "<group>"; };
-		68E59F52EDEDB63C0E52DDAE /* libPods-koltkeyboardexample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-koltkeyboardexample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8471FD694E9E64BA206645DD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = koltkeyboardexample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		54A6E4436B033A5A10FB179B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = koltkeyboardexample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5B710CAEEA53C58345619B53 /* libPods-koltkeyboardexample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-koltkeyboardexample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7125BC3E8C44204AB7A0A857 /* Pods-koltkeyboardexample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-koltkeyboardexample.debug.xcconfig"; path = "Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = koltkeyboardexample/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B572B6B5B24F371599E3FB33 /* Pods-koltkeyboardexample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-koltkeyboardexample.release.xcconfig"; path = "Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample.release.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		DC199630935253A9FE77AEE4 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-koltkeyboardexample/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = koltkeyboardexample/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* koltkeyboardexample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "koltkeyboardexample-Bridging-Header.h"; path = "koltkeyboardexample/koltkeyboardexample-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,23 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F69FA9FFE964E33ABDCE83A /* libPods-koltkeyboardexample.a in Frameworks */,
+				C18C20F4C74DEB9988E710B4 /* libPods-koltkeyboardexample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B01A6BD9A6D3ED4199C44F0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2ADF024F5D0238F601D6AE5D /* Pods-koltkeyboardexample.debug.xcconfig */,
-				24D73E2D4F898D0BEA016039 /* Pods-koltkeyboardexample.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* koltkeyboardexample */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				8471FD694E9E64BA206645DD /* PrivacyInfo.xcprivacy */,
-			);
-			name = koltkeyboardexample;
-			sourceTree = "<group>";
-		};
-		20945302DA50CEB2F2AB77AE /* koltkeyboardexample */ = {
-			isa = PBXGroup;
-			children = (
-				DC199630935253A9FE77AEE4 /* ExpoModulesProvider.swift */,
+				54A6E4436B033A5A10FB179B /* PrivacyInfo.xcprivacy */,
 			);
 			name = koltkeyboardexample;
 			sourceTree = "<group>";
@@ -80,9 +62,17 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				68E59F52EDEDB63C0E52DDAE /* libPods-koltkeyboardexample.a */,
+				5B710CAEEA53C58345619B53 /* libPods-koltkeyboardexample.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		37C72F88C85F85A20BBC6B16 /* koltkeyboardexample */ = {
+			isa = PBXGroup;
+			children = (
+				0E3BED72603C33679BE73D75 /* ExpoModulesProvider.swift */,
+			);
+			name = koltkeyboardexample;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -99,8 +89,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				0B01A6BD9A6D3ED4199C44F0 /* Pods */,
-				BF9CFACFD17A35D8822EA073 /* ExpoModulesProviders */,
+				A9B1F0BF37E76D57A4308A97 /* Pods */,
+				E82E32AED56077E1641135DA /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,6 +105,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A9B1F0BF37E76D57A4308A97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7125BC3E8C44204AB7A0A857 /* Pods-koltkeyboardexample.debug.xcconfig */,
+				B572B6B5B24F371599E3FB33 /* Pods-koltkeyboardexample.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,10 +124,10 @@
 			path = koltkeyboardexample/Supporting;
 			sourceTree = "<group>";
 		};
-		BF9CFACFD17A35D8822EA073 /* ExpoModulesProviders */ = {
+		E82E32AED56077E1641135DA /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				20945302DA50CEB2F2AB77AE /* koltkeyboardexample */,
+				37C72F88C85F85A20BBC6B16 /* koltkeyboardexample */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "koltkeyboardexample" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				76C78CC7F366512126B9C58A /* [Expo] Configure project */,
+				6C693B9150714554FB7D1288 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				5AAEDD081A5713B1D4C152A1 /* [CP] Embed Pods Frameworks */,
+				E6EAFD54AEB2BDA6D05E9B68 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				60A7986000786A32D3070237 /* PrivacyInfo.xcprivacy in Resources */,
+				A53925BF1EB810401A89932B /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,39 +242,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5AAEDD081A5713B1D4C152A1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem.framework/ExpoFileSystem",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFont/ExpoFont.framework/ExpoFont",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesCore/ExpoModulesCore.framework/ExpoModulesCore",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesJSI/ExpoModulesJSI.framework/ExpoModulesJSI",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesWorklets/ExpoModulesWorklets.framework/ExpoModulesWorklets",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermesvm.framework/hermesvm",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFileSystem.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFont.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesJSI.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesWorklets.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermesvm.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		76C78CC7F366512126B9C58A /* [Expo] Configure project */ = {
+		6C693B9150714554FB7D1288 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -326,6 +294,38 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E6EAFD54AEB2BDA6D05E9B68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem.framework/ExpoFileSystem",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoFont/ExpoFont.framework/ExpoFont",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesCore/ExpoModulesCore.framework/ExpoModulesCore",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesJSI/ExpoModulesJSI.framework/ExpoModulesJSI",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ExpoModulesWorklets/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermesvm.framework/hermesvm",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFileSystem.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoFont.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesJSI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpoModulesWorklets.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermesvm.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-koltkeyboardexample/Pods-koltkeyboardexample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -334,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				C6D46A2788312C4601176386 /* ExpoModulesProvider.swift in Sources */,
+				2FCF6D3852E412A34E0AAC10 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +343,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2ADF024F5D0238F601D6AE5D /* Pods-koltkeyboardexample.debug.xcconfig */;
+			baseConfigurationReference = 7125BC3E8C44204AB7A0A857 /* Pods-koltkeyboardexample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -380,7 +380,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 24D73E2D4F898D0BEA016039 /* Pods-koltkeyboardexample.release.xcconfig */;
+			baseConfigurationReference = B572B6B5B24F371599E3FB33 /* Pods-koltkeyboardexample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
