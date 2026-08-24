@@ -4,6 +4,7 @@
   "main": "index.ts",
   "dependencies": {
     "expo": "~57.0.16",
+    "expo-ios-scene-lifecycle-plugin": "github:YesterdaysLemon/expo-ios-scene-lifecycle-plugin",
     "react": "19.2.3",
     "react-native": "0.86.2"
   },
