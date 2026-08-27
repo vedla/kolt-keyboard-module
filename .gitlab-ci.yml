@@ -27,9 +27,6 @@ auto_tag:
     - PACKAGE_VERSION=$(node -p "require('./package.json').version")
     - VERSION_TAG="v${PACKAGE_VERSION}"
     - TAG_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/${VERSION_TAG}"
-    - "echo Checking if ${VERSION_TAG} exists in GitLab..."
-    - "echo ${RELEASE_TOKEN}"
-    - "echo ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/${VERSION_TAG}"
     - |
       TAG_STATUS=$(curl --silent --show-error --header "PRIVATE-TOKEN: ${RELEASE_TOKEN}" --write-out '%{http_code}' --output /dev/null "$TAG_URL")
       if [[ "$TAG_STATUS" == "200" ]]; then
