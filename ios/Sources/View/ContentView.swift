@@ -64,7 +64,7 @@ private enum SymbolCatalog {
         .init(id: "up", value: "↑", name: "Up arrow", category: "Arrows"),
         .init(id: "down", value: "↓", name: "Down arrow", category: "Arrows"),
         .init(id: "both", value: "↔", name: "Left-right arrow", category: "Arrows"),
-        .init(id: "return", value: "↩", name: "Return arrow", category: "Arrows"),
+
         .init(id: "double-right", value: "⇒", name: "Double right arrow", category: "Arrows"),
         .init(id: "bullet", value: "•", name: "Bullet", category: "Typography"),
         .init(id: "middle-dot", value: "·", name: "Middle dot", category: "Typography"),

@@ -1,4 +1,4 @@
-image: node:22
+image: node:24
 
 stages:
   - build
@@ -40,6 +40,7 @@ publish:
     - npm publish "kolt-keyboard-${CI_COMMIT_SHA}.tgz" --ignore-scripts
 
 release:
+  image: registry.gitlab.com/gitlab-org/cli:latest
   stage: release
   needs:
     - job: build
@@ -48,17 +49,9 @@ release:
   rules:
     - if: '$CI_COMMIT_TAG'
   script:
-    - echo "Creating release ${CI_COMMIT_TAG}"
+    - glab auth login --hostname "$CI_SERVER_HOST" --job-token "$CI_JOB_TOKEN"
+    - glab release create "$CI_COMMIT_TAG" --name "Release $CI_COMMIT_TAG" --notes "Published kolt-keyboard package." --assets-link "{\"name\":\"kolt-keyboard package\",\"url\":\"$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/file/kolt-keyboard-$CI_COMMIT_SHA.tgz\",\"link_type\":\"package\"}"
   artifacts:
     paths:
       - kolt-keyboard-*.tgz
     expire_in: never
-  release:
-    tag_name: '$CI_COMMIT_TAG'
-    name: 'Release $CI_COMMIT_TAG'
-    description: 'Published kolt-keyboard package.'
-    assets:
-      links:
-        - name: 'kolt-keyboard package'
-          url: '$CI_PROJECT_URL/-/jobs/$CI_JOB_ID/artifacts/file/kolt-keyboard-$CI_COMMIT_SHA.tgz'
-          link_type: 'package'

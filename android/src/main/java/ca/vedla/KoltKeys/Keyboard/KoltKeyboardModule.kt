@@ -10,23 +10,18 @@ class KoltKeyboardModule : Module() {
 
     Function("setConfiguration") { json: String, _: String? ->
       JSONObject(json)
-      preferences().edit().putString(PAYLOAD_KEY, json).apply()
+      preferences().edit().putString(KoltKeyboardStorage.PAYLOAD_KEY, json).apply()
     }
 
     Function("getConfiguration") { _: String? ->
-      preferences().getString(PAYLOAD_KEY, null)
+      preferences().getString(KoltKeyboardStorage.PAYLOAD_KEY, null)
     }
 
     Function("clearConfiguration") { _: String? ->
-      preferences().edit().remove(PAYLOAD_KEY).apply()
+      preferences().edit().remove(KoltKeyboardStorage.PAYLOAD_KEY).apply()
     }
   }
 
-  private fun preferences() = requireNotNull(appContext.reactContext)
-    .getSharedPreferences(PREFERENCES_NAME, android.content.Context.MODE_PRIVATE)
-
-  private companion object {
-    const val PREFERENCES_NAME = "kolt_keyboard"
-    const val PAYLOAD_KEY = "keyboard.payload.v1"
-  }
+  private fun preferences() =
+    KoltKeyboardStorage.preferences(requireNotNull(appContext.reactContext))
 }
