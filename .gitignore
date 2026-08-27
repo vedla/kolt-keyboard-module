@@ -55,3 +55,5 @@ yarn-error.log
 
 # Expo
 .expo/*
+.gitlab-ci-local-variables.yml
+.gitlab-ci-local/
