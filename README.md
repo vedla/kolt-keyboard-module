@@ -1,6 +1,6 @@
 # Kolt Keyboard
 
-An Expo native module that lets React Native define a custom keyboard's pages and keys while UIKit renders the actual iOS keyboard extension.
+An Expo native module that lets React Native define a custom keyboard's pages and keys while native iOS and Android views render the actual keyboard.
 
 ## Architecture
 
@@ -13,7 +13,7 @@ Register one App Group in the Apple Developer portal for both the app and keyboa
 ```json
 {
   "expo": {
-    "plugins": [["kolt-keyboard", { "appGroupIdentifier": "group.com.example.myapp.keyboard" }]]
+    "plugins": [["@kolt/kolt-keyboard-module", { "appGroupIdentifier": "group.com.example.myapp.keyboard" }]]
   }
 }
 ```
@@ -54,6 +54,9 @@ setKeyboardConfiguration({
 
 The native bottom row (next-keyboard globe, space, and delete) remains native and is always available.
 
-## Android status
+## Android
 
-The Expo module persists and reads the same configuration model on Android. An Android `InputMethodService` renderer is not included yet; iOS is the current end-to-end implementation.
+The Android library declares a native `InputMethodService`, so Expo autolinking and Android manifest merging register Kolt Keys automatically. After installing a development or release build, enable it under Settings > System > Keyboard > On-screen keyboard > Manage on-screen keyboards. The exact path varies by Android manufacturer.
+
+The service reads the same on-device configuration written by `setKeyboardConfiguration`. It does not run React Native or make network calls while the keyboard is open.
+

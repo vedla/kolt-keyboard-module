@@ -1,12 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-
 const {
   createRunOncePlugin,
   withEntitlementsPlist,
   withInfoPlist,
   withXcodeProject,
 } = require('@expo/config-plugins');
+const fs = require('fs');
+const path = require('path');
 
 const pkg = require('../package.json');
 
@@ -23,7 +22,13 @@ function findTarget(project, name) {
   return null;
 }
 
-function configureTargetBuildSettings(project, target, bundleIdentifier, marketingVersion) {
+function configureTargetBuildSettings(
+  project,
+  target,
+  bundleIdentifier,
+  marketingVersion,
+  appDeveloperTeam
+) {
   const configurationList = project.pbxXCConfigurationList()[target.buildConfigurationList];
   const configurations = project.pbxXCBuildConfigurationSection();
 
@@ -36,6 +41,7 @@ function configureTargetBuildSettings(project, target, bundleIdentifier, marketi
     settings.GENERATE_INFOPLIST_FILE = 'NO';
     settings.INFOPLIST_FILE = `"${EXTENSION_DIRECTORY}/Info.plist"`;
     settings.IPHONEOS_DEPLOYMENT_TARGET = '16.4';
+    settings.DEVELOPMENT_TEAM = appDeveloperTeam;
     settings.MARKETING_VERSION = marketingVersion;
     settings.PRODUCT_BUNDLE_IDENTIFIER = `"${bundleIdentifier}"`;
     settings.PRODUCT_NAME = `"${TARGET_NAME}"`;
@@ -45,7 +51,7 @@ function configureTargetBuildSettings(project, target, bundleIdentifier, marketi
   }
 }
 
-function addExtensionTarget(project, bundleIdentifier, marketingVersion) {
+function addExtensionTarget(project, bundleIdentifier, marketingVersion, appDeveloperTeam) {
   let extensionTarget = findTarget(project, TARGET_NAME);
   if (!extensionTarget) {
     const added = project.addTarget(
@@ -65,11 +71,18 @@ function addExtensionTarget(project, bundleIdentifier, marketingVersion) {
     project.addBuildPhase([], 'PBXResourcesBuildPhase', 'Resources', extensionTarget.uuid);
   }
 
-  configureTargetBuildSettings(project, extensionTarget.target, bundleIdentifier, marketingVersion);
+  configureTargetBuildSettings(
+    project,
+    extensionTarget.target,
+    bundleIdentifier,
+    marketingVersion,
+    appDeveloperTeam
+  );
 }
 
 function copyExtensionFiles(projectRoot, appGroupIdentifier, displayName) {
   const destination = path.join(projectRoot, EXTENSION_DIRECTORY);
+  // eslint-disable-next-line no-undef
   const templates = path.join(__dirname, 'ios');
   fs.mkdirSync(destination, { recursive: true });
   fs.copyFileSync(
@@ -89,6 +102,43 @@ function copyExtensionFiles(projectRoot, appGroupIdentifier, displayName) {
   fs.writeFileSync(path.join(destination, `${TARGET_NAME}.entitlements`), entitlements);
 }
 
+function declareEasExtension(config, bundleIdentifier, appGroupIdentifier) {
+  const eas = config.extra?.eas || {};
+  const build = eas.build || {};
+  const experimental = build.experimental || {};
+  const ios = experimental.ios || {};
+  const appExtensions = ios.appExtensions || [];
+  const extension = {
+    targetName: TARGET_NAME,
+    bundleIdentifier,
+    entitlements: {
+      'com.apple.security.application-groups': [appGroupIdentifier],
+    },
+  };
+
+  config.extra = {
+    ...config.extra,
+    eas: {
+      ...eas,
+      build: {
+        ...build,
+        experimental: {
+          ...experimental,
+          ios: {
+            ...ios,
+            appExtensions: [
+              ...appExtensions.filter((item) => item.targetName !== TARGET_NAME),
+              extension,
+            ],
+          },
+        },
+      },
+    },
+  };
+
+  return config;
+}
+
 function withKoltKeyboard(config, props) {
   if (
     !props ||
@@ -102,8 +152,16 @@ function withKoltKeyboard(config, props) {
 
   const extensionBundleIdentifier =
     props.extensionBundleIdentifier || `${config.ios?.bundleIdentifier}.${TARGET_NAME}`;
+  const appDeveloperTeam = props.appleTeamId || config.ios?.appleTeamId;
+  if (!appDeveloperTeam) {
+    throw new Error(
+      'kolt-keyboard requires an appDeveloperTeam to be specified in app.json or in the plugin props.'
+    );
+  }
   const displayName = props.displayName || 'Kolt Keyboard';
   const marketingVersion = config.version || '1.0.0';
+
+  config = declareEasExtension(config, extensionBundleIdentifier, props.appGroupIdentifier);
 
   config = withInfoPlist(config, (infoConfig) => {
     infoConfig.modResults.KoltKeyboardAppGroup = props.appGroupIdentifier;
@@ -123,7 +181,12 @@ function withKoltKeyboard(config, props) {
       props.appGroupIdentifier,
       displayName
     );
-    addExtensionTarget(projectConfig.modResults, extensionBundleIdentifier, marketingVersion);
+    addExtensionTarget(
+      projectConfig.modResults,
+      extensionBundleIdentifier,
+      marketingVersion,
+      appDeveloperTeam
+    );
     return projectConfig;
   });
 
