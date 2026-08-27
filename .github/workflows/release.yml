@@ -1,0 +1,33 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - run: corepack enable
+
+      - run: yarn install
+      - run: yarn build
+      - run: yarn pack --filename "kolt-keyboard-${{ github.sha }}.tgz"
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/**
+            *.tgz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

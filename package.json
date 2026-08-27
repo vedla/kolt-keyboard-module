@@ -1,6 +1,6 @@
 {
   "name": "@kolt/kolt-keyboard-module",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Kolt Custom Keyboard",
   "keywords": [
     "react-native",
@@ -20,8 +20,8 @@
     "./app.plugin": "./app.plugin.js",
     "./app.plugin.js": "./app.plugin.js"
   },
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "node internal/module_scripts/build.js",
     "clean": "node internal/module_scripts/clean.js",

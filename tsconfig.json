@@ -28,7 +28,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "rootDir": "./src",
-    "outDir": "./build"
+    "outDir": "./dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
     "./src"

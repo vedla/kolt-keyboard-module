@@ -25,7 +25,7 @@ auto_tag:
   script:
     - test -n "$RELEASE_TOKEN" || (echo "RELEASE_TOKEN is not available. Add a masked project access token with api scope to CI/CD variables." && exit 1)
     - PACKAGE_VERSION=$(node -p "require('./package.json').version")
-    - VERSION_TAG="v${PACKAGE_VERSION}"
+    - VERSION_TAG="${PACKAGE_VERSION}"
     - TAG_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/${VERSION_TAG}"
     - |
       TAG_STATUS=$(curl --silent --show-error --header "PRIVATE-TOKEN: ${RELEASE_TOKEN}" --write-out '%{http_code}' --output /dev/null "$TAG_URL")
