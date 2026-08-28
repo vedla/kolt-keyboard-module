@@ -74,14 +74,16 @@ private struct KoltKeyboardPalette {
   let border: UIColor
   let accent: UIColor
 
-  static func forTheme(_ theme: String) -> KoltKeyboardPalette {
+  static func forTheme(_ theme: String, interfaceStyle: UIUserInterfaceStyle = .unspecified) -> KoltKeyboardPalette {
     switch theme {
-    case "midnight":
+    case "system":
+      return forTheme(interfaceStyle == .dark ? "dark" : "light", interfaceStyle: interfaceStyle)
+    case "dark", "midnight":
       return .init(
-        backgroundStart: rgb(24, 27, 49), backgroundEnd: rgb(31, 35, 62),
-        surface: rgb(39, 43, 72), key: rgb(48, 52, 82), systemKey: rgb(68, 72, 104),
-        text: .white, secondaryText: rgb(187, 190, 211), border: rgb(68, 72, 104),
-        accent: rgb(128, 111, 246)
+        backgroundStart: rgb(24, 24, 21), backgroundEnd: rgb(18, 18, 16),
+        surface: rgb(38, 38, 34), key: rgb(49, 49, 44), systemKey: rgb(67, 67, 60),
+        text: rgb(247, 246, 240), secondaryText: rgb(174, 173, 162), border: rgb(76, 76, 68),
+        accent: rgb(226, 169, 95)
       )
     case "graphite":
       return .init(
@@ -92,17 +94,17 @@ private struct KoltKeyboardPalette {
       )
     case "ocean":
       return .init(
-        backgroundStart: rgb(18, 43, 52), backgroundEnd: rgb(20, 56, 67),
-        surface: rgb(27, 62, 72), key: rgb(34, 73, 84), systemKey: rgb(54, 94, 104),
-        text: .white, secondaryText: rgb(180, 211, 217), border: rgb(54, 94, 104),
-        accent: rgb(48, 183, 205)
+        backgroundStart: rgb(18, 43, 48), backgroundEnd: rgb(13, 34, 38),
+        surface: rgb(31, 63, 68), key: rgb(43, 79, 84), systemKey: rgb(61, 100, 105),
+        text: .white, secondaryText: rgb(190, 215, 216), border: rgb(69, 111, 116),
+        accent: rgb(95, 193, 202)
       )
     default:
       return .init(
-        backgroundStart: rgb(49, 39, 67), backgroundEnd: rgb(88, 58, 126),
-        surface: rgb(75, 60, 96), key: rgb(94, 75, 119), systemKey: rgb(116, 91, 145),
-        text: .white, secondaryText: rgb(220, 207, 235), border: rgb(126, 100, 157),
-        accent: rgb(164, 132, 255)
+        backgroundStart: rgb(226, 225, 218), backgroundEnd: rgb(213, 212, 204),
+        surface: rgb(244, 243, 237), key: rgb(255, 255, 253), systemKey: rgb(187, 186, 177),
+        text: rgb(28, 28, 25), secondaryText: rgb(95, 95, 88), border: rgb(198, 197, 188),
+        accent: rgb(181, 106, 18)
       )
     }
   }
@@ -121,7 +123,8 @@ final class KeyboardViewController: UIInputViewController {
   private let keyStack = UIStackView()
   private let bottomBar = UIStackView()
   private var pages: [KoltKeyboardPage] = []
-  private var palette = KoltKeyboardPalette.forTheme("lavender")
+  private var activeTheme = "system"
+  private var palette = KoltKeyboardPalette.forTheme("system")
 
   private lazy var globeButton: UIButton = {
     let button = systemKey(title: "", action: #selector(showInputModes(_:event:)))
@@ -147,6 +150,14 @@ final class KeyboardViewController: UIInputViewController {
     gradientLayer.frame = view.bounds
   }
 
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    if activeTheme == "system", previousTraitCollection?.userInterfaceStyle != traitCollection.userInterfaceStyle {
+      applyTheme(activeTheme)
+      rebuildKeys()
+    }
+  }
+
   private func configureView() {
     let height = view.heightAnchor.constraint(equalToConstant: 300)
     height.priority = .defaultHigh
@@ -159,13 +170,13 @@ final class KeyboardViewController: UIInputViewController {
     brandLabel.font = .systemFont(ofSize: 17, weight: .black)
     brandLabel.textAlignment = .center
     brandLabel.textColor = .white
-    brandLabel.layer.cornerRadius = 9
+    brandLabel.layer.cornerRadius = 10
     brandLabel.clipsToBounds = true
     brandLabel.translatesAutoresizingMaskIntoConstraints = false
     brandLabel.widthAnchor.constraint(equalToConstant: 34).isActive = true
     brandLabel.heightAnchor.constraint(equalToConstant: 34).isActive = true
 
-    statusLabel.font = .systemFont(ofSize: 9, weight: .bold)
+    statusLabel.font = .systemFont(ofSize: 9, weight: .semibold)
     statusLabel.setContentHuggingPriority(.required, for: .horizontal)
 
     pageControl.addTarget(self, action: #selector(pageChanged), for: .valueChanged)
@@ -179,12 +190,12 @@ final class KeyboardViewController: UIInputViewController {
     scrollView.alwaysBounceVertical = true
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     keyStack.axis = .vertical
-    keyStack.spacing = 7
+    keyStack.spacing = 6
     keyStack.translatesAutoresizingMaskIntoConstraints = false
     scrollView.addSubview(keyStack)
 
     bottomBar.axis = .horizontal
-    bottomBar.spacing = 7
+    bottomBar.spacing = 6
     bottomBar.translatesAutoresizingMaskIntoConstraints = false
     bottomBar.addArrangedSubview(globeButton)
     let space = systemKey(title: "space", action: #selector(insertSpace))
@@ -214,7 +225,7 @@ final class KeyboardViewController: UIInputViewController {
       bottomBar.heightAnchor.constraint(equalToConstant: 43),
       space.widthAnchor.constraint(greaterThanOrEqualTo: view.widthAnchor, multiplier: 0.5),
     ])
-    applyTheme("lavender")
+    applyTheme("system")
   }
 
   private func reloadConfiguration() {
@@ -227,7 +238,7 @@ final class KeyboardViewController: UIInputViewController {
     }
 
     pages = payload.pages
-    applyTheme(payload.appearance?.theme ?? "lavender")
+    applyTheme(payload.appearance?.theme ?? "system")
     brandLabel.text = payload.brand ?? "K"
     statusLabel.text = payload.statusLabel ?? ""
     let selectedPage = max(pageControl.selectedSegmentIndex, 0)
@@ -282,11 +293,11 @@ final class KeyboardViewController: UIInputViewController {
     for start in stride(from: 0, to: keys.count, by: columns) {
       let row = UIStackView()
       row.axis = .horizontal
-      row.spacing = 6
+      row.spacing = 5
       row.distribution = .fillEqually
       for index in start..<min(start + columns, keys.count) { row.addArrangedSubview(insertKey(keys[index])) }
       for _ in row.arrangedSubviews.count..<columns { row.addArrangedSubview(UIView()) }
-      row.heightAnchor.constraint(equalToConstant: 45).isActive = true
+      row.heightAnchor.constraint(equalToConstant: 44).isActive = true
       keyStack.addArrangedSubview(row)
     }
   }
@@ -296,7 +307,7 @@ final class KeyboardViewController: UIInputViewController {
       let button = insertKey(key)
       button.contentHorizontalAlignment = .leading
       button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
-      button.heightAnchor.constraint(equalToConstant: 45).isActive = true
+      button.heightAnchor.constraint(equalToConstant: 44).isActive = true
       keyStack.addArrangedSubview(button)
     }
   }
@@ -327,13 +338,18 @@ final class KeyboardViewController: UIInputViewController {
     button.backgroundColor = button.restingColor
     button.setTitleColor(palette.text, for: .normal)
     button.tintColor = palette.text
-    button.layer.cornerRadius = 11
+    button.layer.cornerRadius = 7
     button.layer.borderWidth = 0.5
     button.layer.borderColor = palette.border.cgColor
+    button.layer.shadowColor = UIColor.black.cgColor
+    button.layer.shadowOpacity = traitCollection.userInterfaceStyle == .dark ? 0.18 : 0.22
+    button.layer.shadowOffset = CGSize(width: 0, height: 1)
+    button.layer.shadowRadius = 0.5
   }
 
   private func applyTheme(_ theme: String) {
-    palette = KoltKeyboardPalette.forTheme(theme)
+    activeTheme = theme
+    palette = KoltKeyboardPalette.forTheme(theme, interfaceStyle: traitCollection.userInterfaceStyle)
     gradientLayer.colors = [palette.backgroundStart.cgColor, palette.backgroundEnd.cgColor]
     brandLabel.backgroundColor = palette.accent
     statusLabel.textColor = palette.secondaryText

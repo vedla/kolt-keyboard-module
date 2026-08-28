@@ -14,7 +14,7 @@ export type KoltKeyboardSection = {
   keys: KoltKeyboardKey[]
   columns?: number
 }
-export type KoltKeyboardTheme = 'lavender' | 'midnight' | 'graphite' | 'ocean'
+export type KoltKeyboardTheme = 'system' | 'light' | 'dark' | 'ocean'
 
 /** A page shown in the native keyboard's segmented control. */
 export type KoltKeyboardPage = {

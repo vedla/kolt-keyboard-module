@@ -92,20 +92,9 @@ export function createKeyboardConfiguration(preset: KoltKeyboardPreset): KoltKey
   return {
     brand: preset.brand ?? 'K',
     statusLabel: preset.statusLabel ?? 'ON-DEVICE',
-    appearance: { theme: preset.theme ?? 'lavender' },
+    appearance: { theme: preset.theme ?? 'system' },
     frequentlyUsed: { enabled: preset.frequentlyUsed ?? true, maxKeys: 6 },
     pages: [
-      {
-        id: 'symbols',
-        title: 'Symbols',
-        layout: 'grid',
-        keys: preset.symbols.map((symbol, index) => ({
-          id: `symbol-${index}-${symbol}`,
-          label: symbol,
-          text: symbol,
-        })),
-        emptyState: 'Choose symbols in the app.',
-      },
       {
         id: 'snippets',
         title: 'Snippets',
@@ -116,6 +105,17 @@ export function createKeyboardConfiguration(preset: KoltKeyboardPreset): KoltKey
           text: snippet.text,
         })),
         emptyState: 'Add snippets in the app.',
+      },
+      {
+        id: 'symbols',
+        title: 'Symbols',
+        layout: 'grid',
+        keys: preset.symbols.map((symbol, index) => ({
+          id: `symbol-${index}-${symbol}`,
+          label: symbol,
+          text: symbol,
+        })),
+        emptyState: 'Choose symbols in the app.',
       },
     ],
   }
